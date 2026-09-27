@@ -25,7 +25,8 @@ export class ProjetoController {
     async buscarPorId(req: Request, res: Response) {
         try {
           const projeto = await repository.buscarPorId(req.params.id as string);
-          if (!projeto) return res.status(404).json({ erro: 'Projeto não encontrado' });              return res.status(200).json(projeto);
+          if (!projeto) return res.status(404).json({ erro: 'Projeto não encontrado' });
+          return res.status(200).json(projeto);              
         } catch (error) {
           return res.status(500).json({ erro: 'Erro ao buscar projeto' });
         }
